@@ -12,7 +12,10 @@ app.use(express.json());
 // Đảm bảo rằng tên cơ sở dữ liệu không có khoảng trắng
 mongoose.connect('mongodb://localhost:27017/quanlythoi_gian', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Kết nối MongoDB thành công'))
-  .catch(err => console.log(err));
+  .catch(err => {
+    console.error('Kết nối MongoDB thất bại:', err);
+    process.exit(1); // Kết thúc tiến trình nếu kết nối thất bại
+  });
 
 // Middleware xử lý lỗi
 app.use((err, req, res, next) => {
