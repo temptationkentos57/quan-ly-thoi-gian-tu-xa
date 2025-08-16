@@ -14,6 +14,12 @@ mongoose.connect('mongodb://localhost:27017/quanlythoi_gian', { useNewUrlParser:
   .then(() => console.log('Kết nối MongoDB thành công'))
   .catch(err => console.log(err));
 
+// Middleware xử lý lỗi
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Đã xảy ra lỗi, vui lòng thử lại sau.');
+});
+
 app.get('/', (req, res) => {
   res.send('API đang hoạt động');
 });
