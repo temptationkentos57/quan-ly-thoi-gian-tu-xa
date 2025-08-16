@@ -9,7 +9,8 @@ app.use(cors());
 app.use(express.json());
 
 // Kết nối MongoDB
-mongoose.connect('mongodb://localhost:27017/quanlythoi gian', { useNewUrlParser: true, useUnifiedTopology: true })
+// Đảm bảo rằng tên cơ sở dữ liệu không có khoảng trắng
+mongoose.connect('mongodb://localhost:27017/quanlythoi_gian', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Kết nối MongoDB thành công'))
   .catch(err => console.log(err));
 
